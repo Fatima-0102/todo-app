@@ -1,4 +1,5 @@
 import './App.css';
+import TodoList from './components/TodoList/TodoList';
 
 import { useState } from 'react';
 
@@ -14,13 +15,12 @@ const App = () => {
     if (userInput === "") {
       console.log("Add a task!!")
     }else{
-      SetUserInput({
-        ...SetTodoList,
-        userInput,
-      })
+      SetTodoList([
+        ...todoList,
+        {text: userInput, completed: false }
+      ])
       SetUserInput(""); 
     }
-
   }
 
   return(
@@ -43,8 +43,8 @@ const App = () => {
           </form>
         </section>
 
-        <section className="todo-list">
-          Todo List:
+        <section className="todo-list" >
+          <TodoList todoList={todoList} />
         </section>
 
         <section className="reset-btn">
