@@ -1,25 +1,58 @@
-import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import { useState } from 'react';
 
+const App = () => {
+
+  const [userInput, SetUserInput] = useState("");
+  const [todoList, SetTodoList] = useState([]);
+
+  const handleAddInput = (event) =>{
+    event.preventDefault();
+    console.log(userInput);
+
+    if (userInput === "") {
+      console.log("Add a task!!")
+    }else{
+      SetUserInput({
+        ...SetTodoList,
+        userInput,
+      })
+      SetUserInput(""); 
+    }
+
+  }
+
+  return(
+    <>
+      <div className="app">
+        <header className="my-todos">
+          <h1 className="todo-title">My Todos</h1>
+        </header>
+
+        <section className="todo-input">
+          <form onSubmit={handleAddInput}>
+          <input 
+            type="text" 
+            placeholder="Add your tasks here..." 
+            value={userInput}
+            onChange={(event) => SetUserInput(event.target.value)}
+          />
+          
+          <button type="submit">Add</button>
+          </form>
+        </section>
+
+        <section className="todo-list">
+          Todo List:
+        </section>
+
+        <section className="reset-btn">
+          <button>Reset</button>
+        </section>
+      </div>
+    
+    </>
+  )
+}
 export default App;
