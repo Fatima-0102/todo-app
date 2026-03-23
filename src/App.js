@@ -1,5 +1,6 @@
 import './App.css';
 import TodoList from './components/TodoList/TodoList';
+//import TodoItem from './components/TodoItem/TodoItem'
 
 import { useState } from 'react';
 
@@ -13,7 +14,7 @@ const App = () => {
     console.log(userInput);
 
     if (userInput === "") {
-      console.log("Add a task!!")
+      alert("Add a task!!")
     }else{
       SetTodoList([
         ...todoList,
@@ -37,14 +38,17 @@ const App = () => {
             placeholder="Add your tasks here..." 
             value={userInput}
             onChange={(event) => SetUserInput(event.target.value)}
-          />
-          
+          />        
           <button type="submit">Add</button>
           </form>
         </section>
 
         <section className="todo-list" >
           <TodoList todoList={todoList} />
+        </section>
+
+        <section className="todo-item">
+          
         </section>
 
         <section className="reset-btn">
