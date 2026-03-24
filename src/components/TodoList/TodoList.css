@@ -1,0 +1,12 @@
+.todolist-show h2 {
+  margin: 0 0 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #222222;
+}
+
+.todolist-show > p {
+  margin: 10px 0 0;
+  color: #555555;
+  font-size: 0.95rem;
+}

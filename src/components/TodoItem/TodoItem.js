@@ -1,13 +1,17 @@
+import '../TodoItem/TodoItem.css'
+import { MdDelete } from "react-icons/md";
 
 const TodoItem = (props) => {
 
-    const { item } = props;
+    const { item, id, handleDelete, handleComplete } = props;
 
     return(
         <div className="todoitem-show">
-            <input type="checkbox" checked={item.completed} />
-            <p>{item.text}</p>
-            <button>Delete</button>
+            <input type="checkbox" checked={item.completed} onChange={ () => handleComplete(id)}/>
+            <p className={item.completed ? "completed" : ""}>{item.text}</p>
+            <button className="delete-btn" onClick={() => handleDelete(id)}>
+                <MdDelete />
+            </button>
         </div>
     )
 }

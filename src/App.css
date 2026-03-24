@@ -1,12 +1,103 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f3f3f3;
+}
+
 .app {
-  text-align: center;
+  width: 100%;
+  max-width: 520px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 20px 16px 40px;
+  background-color: #e0e8e9;
+  text-align: left;
+}
+
+.my-todos {
+  margin-bottom: 16px;
 }
 
 .todo-title {
-  font-size: 50px;
-  color: black;
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #111111;
+}
+
+.todo-input form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.todo-input input {
+  flex: 1;
+  height: 40px;
+  padding: 0 12px;
+  border: 2px solid #cfcfcf;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.todo-input input:focus {
+  border-color: #7aa7ff;
+}
+
+.add-btn {
+  width: 40px;
+  height: 40px;
+  border: 2px solid #444444;
+  border-radius: 50%;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  font-size: 1.2rem;
+}
+
+.add-btn:hover {
+  background-color: #f5f5f5;
 }
 
 .reset-btn {
-  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 16px;
+}
+
+.reset-btn button {
+  min-width: 68px;
+  height: 34px;
+  border: 2px solid #444444;
+  border-radius: 8px;
+  background-color: #ffffff;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.reset-btn button:hover {
+  background-color: #f5f5f5;
+}
+
+@media (max-width: 450px) {
+  .app {
+    padding: 16px 12px 32px;
+  }
+
+  .todo-title {
+    font-size: 1.8rem;
+  }
+
+  .todo-input input {
+    font-size: 0.9rem;
+  }
 }

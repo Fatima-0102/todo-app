@@ -1,6 +1,7 @@
 import './App.css';
 import TodoList from './components/TodoList/TodoList';
 //import TodoItem from './components/TodoItem/TodoItem'
+import { IoAddCircleOutline } from "react-icons/io5";
 
 import { useState } from 'react';
 
@@ -18,14 +19,34 @@ const App = () => {
     }else{
       SetTodoList([
         ...todoList,
-        {text: userInput, completed: false }
+        {id:Date.now(), text: userInput, completed: false }
       ])
       SetUserInput(""); 
     }
   }
 
+  const handleDelete = (toDelete) => {
+    const updatedtodoList = todoList.filter((item) => item.id !== toDelete );
+    SetTodoList(updatedtodoList);
+  }
+
+  const handleReset = () => {
+    console.log("reset!")
+    SetTodoList([]);
+  }
+
+  const handleComplete = (id) => {
+    const updatedtodoList = todoList.map((item) =>
+      item.id === id ? {
+        ...item,
+        completed: !item.completed
+      }:
+      item
+  );
+  SetTodoList(updatedtodoList);
+  }
+
   return(
-    <>
       <div className="app">
         <header className="my-todos">
           <h1 className="todo-title">My Todos</h1>
@@ -39,12 +60,14 @@ const App = () => {
             value={userInput}
             onChange={(event) => SetUserInput(event.target.value)}
           />        
-          <button type="submit">Add</button>
+          <button type="submit" className="add-btn">
+            <IoAddCircleOutline />
+          </button>
           </form>
         </section>
 
         <section className="todo-list" >
-          <TodoList todoList={todoList} />
+          <TodoList todoList={todoList} handleDelete={handleDelete} handleComplete={handleComplete}/>
         </section>
 
         <section className="todo-item">
@@ -52,11 +75,9 @@ const App = () => {
         </section>
 
         <section className="reset-btn">
-          <button>Reset</button>
+          <button onClick={handleReset}>Reset</button>
         </section>
       </div>
-    
-    </>
   )
 }
 export default App;
