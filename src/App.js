@@ -1,14 +1,15 @@
 import './App.css';
 import TodoList from './components/TodoList/TodoList';
-//import TodoItem from './components/TodoItem/TodoItem'
-import { IoAddCircleOutline } from "react-icons/io5";
+import ApiComponent from './components/ApiComponent/ApiComponent';
+
+import { IoMdAddCircle } from "react-icons/io";
 
 import { useState } from 'react';
 
 const App = () => {
 
-  const [userInput, SetUserInput] = useState("");
-  const [todoList, SetTodoList] = useState([]);
+  const [userInput, setUserInput] = useState("");
+  const [todoList, setTodoList] = useState([]);
 
   const handleAddInput = (event) =>{
     event.preventDefault();
@@ -17,22 +18,22 @@ const App = () => {
     if (userInput === "") {
       alert("Add a task!!")
     }else{
-      SetTodoList([
+      setTodoList([
         ...todoList,
         {id:Date.now(), text: userInput, completed: false }
       ])
-      SetUserInput(""); 
+      setUserInput(""); 
     }
   }
 
   const handleDelete = (toDelete) => {
     const updatedtodoList = todoList.filter((item) => item.id !== toDelete );
-    SetTodoList(updatedtodoList);
+    setTodoList(updatedtodoList);
   }
 
   const handleReset = () => {
     console.log("reset!")
-    SetTodoList([]);
+    setTodoList([]);
   }
 
   const handleComplete = (id) => {
@@ -43,7 +44,7 @@ const App = () => {
       }:
       item
   );
-  SetTodoList(updatedtodoList);
+  setTodoList(updatedtodoList);
   }
 
   return(
@@ -52,16 +53,20 @@ const App = () => {
           <h1 className="todo-title">My Todos</h1>
         </header>
 
+        <section className="reset-btn">
+          <button onClick={handleReset}>Reset</button>
+        </section>
+
         <section className="todo-input">
           <form onSubmit={handleAddInput}>
           <input 
             type="text" 
             placeholder="Add your tasks here..." 
             value={userInput}
-            onChange={(event) => SetUserInput(event.target.value)}
+            onChange={(event) => setUserInput(event.target.value)}
           />        
           <button type="submit" className="add-btn">
-            <IoAddCircleOutline />
+            <IoMdAddCircle />
           </button>
           </form>
         </section>
@@ -70,13 +75,14 @@ const App = () => {
           <TodoList todoList={todoList} handleDelete={handleDelete} handleComplete={handleComplete}/>
         </section>
 
-        <section className="todo-item">
-          
+        <section className="todo-item">        
         </section>
 
-        <section className="reset-btn">
-          <button onClick={handleReset}>Reset</button>
+        <section className="api-component">
+          <ApiComponent />
         </section>
+
+        
       </div>
   )
 }

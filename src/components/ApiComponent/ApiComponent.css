@@ -1,0 +1,44 @@
+.api {
+    margin-top: 450px;
+    padding: 5px;
+    border: 2px solid #615022;
+    border-radius: 10px;
+    background-color: #e1dac9;
+}
+
+.api-title {
+    margin: 0 0 10px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #362005;
+}
+
+.api-text{
+    margin: 0 0 10px;
+    font-size: 0.8rem;
+    color: #371903;
+    line-height: 1.5;
+}
+
+.api-btn{
+    height: 35px;
+    padding: 0 5px;
+    border: 2px solid #444444;
+    border-radius: 10px;
+    background-color: #937e5a;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.api-btn:hover {
+    background-color: #e1dac9;
+}
+
+@media (max-width: 450px){
+    .api {
+        padding: 15px;
+    }
+    .api-text {
+        font-size: 1rem;
+    }
+}

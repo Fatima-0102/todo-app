@@ -37,10 +37,6 @@
   color: #222222;
 }
 
-.delete-btn:hover {
-  opacity: 0.7;
-}
-
 @media (max-width: 450px) {
   .todoitem-show p {
     font-size: 0.9rem;
